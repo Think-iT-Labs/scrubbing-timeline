@@ -1,4 +1,3 @@
-import './App.css';
 import Timeline from './lib';
 
 function App() {
