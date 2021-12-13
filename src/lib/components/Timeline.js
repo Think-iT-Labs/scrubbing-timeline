@@ -10,19 +10,25 @@ window.ace.config.set(
 
 const Timeline = (props) => {
 
-    const { timelineArray, duration } = props 
+    const { timelineArray, duration, language } = props 
     const [focusedAction, setFocusedAction] = useState(null);
+    const [mode, setMode] = useState("javascript");
+
 
     useEffect(()=> {
         if(timelineArray)
             setFocusedAction(timelineArray[0])
     }, [timelineArray])
     
+    useEffect(()=> {
+        if(language)
+            setMode(language)
+    }, [language])
 
     return (
         <div className="timeline-wrapper">
             <ReactAce
-                mode= "text"
+                mode= {mode}
                 theme= "monokai"
                 name="brace-editor"
                 data-cy="code-editor"

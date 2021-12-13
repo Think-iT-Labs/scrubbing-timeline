@@ -14,12 +14,12 @@ function App() {
       actionType: "HAJA OKHRA"
     },
     {
-      code: "code3",
+      code: "console.log('test')",
       time: 11,
       actionType: "HAJA OKHRA"
     },
     {
-      code: "code4",
+      code: "print('tt')",
       time: 15,
       actionType: "HAJA OKHRA"
     },
@@ -53,7 +53,7 @@ function App() {
 
   return (
     <div className="App h-screen flex flex-col items-center justify-center">
-      <Timeline timelineArray = {actions} duration = {100} />
+      <Timeline timelineArray = {actions} duration = {100} language={"python"} />
     </div>
   );
 }
