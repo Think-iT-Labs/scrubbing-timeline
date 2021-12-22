@@ -4,56 +4,90 @@ function App() {
 
   const actions = [
     {
-      code: "code1",
+      code: "console.log('Hello World in js')",
       time: 0,
-      actionType: "HAJA OKHRA"
+      actionType: "T",
+      lang: "javascript"
     },
     {
-      code: "code2",
+      code: "print('Hello World is Python')",
       time: 10,
-      actionType: "HAJA OKHRA"
+      actionType: "T",
+      lang: "python"
     },
     {
-      code: "console.log('test')",
+      code: `package main
+import "fmt"
+func main() {
+    fmt.Println("Hello World in Golang")
+}`,
       time: 11,
-      actionType: "HAJA OKHRA"
+      actionType: "T",
+      lang: "golang"
     },
     {
-      code: "print('tt')",
+      code: `puts "Hello World in Ruby"`,
       time: 15,
-      actionType: "HAJA OKHRA"
+      actionType: "PASTE",
+      lang: "ruby"
     },
     {
-      code: "code5",
-      time: 19,
-      actionType: "PASTE"
-    },
-    {
-      code: "code6",
+      code: `fun main () {
+    println("Hello World in Kotlin")
+}`,
       time: 30,
-      actionType: "HAJA OKHRA"
+      actionType: "TEST",
+      lang: "kotlin"
     },
     {
-      code: "code7",
+      code: `#include <stdio.h>
+int main()
+{
+    println("Hello World in C");
+    return 0;
+}`,
       time: 45,
-      actionType: "PASTE"
+      actionType: "PASTE",
+      lang: "c_cpp"
     },
     {
-      code: "code8",
+      code: `#include <iostream>
+using namespace std;
+
+int main()
+{
+    std::cout << "Hello World in C++";
+    return 0;
+}`,
       time: 50,
-      actionType: "HAJA OKHRA"
+      actionType: "Test",
+      lang: "c_cpp"
     },
     {
-      code: "code9",
+      code: `import java.util.*;
+import java.lang.*;
+
+public class solution {
+    public static void main (String[] args) {
+        System.out.println("Hello World in Java");
+    }
+}`,
+      time: 70,
+      actionType: "T",
+      lang: "java"
+    },
+    {
+      code: `print("Hello World in Swift")`,
       time: 100,
-      actionType: "HAJA OKHRA"
+      actionType: "T",
+      lang: "swift"
     },
   ]
 
 
   return (
     <div className="App h-screen flex flex-col items-center justify-center">
-      <Timeline timelineArray = {actions} duration = {100} language={"python"} />
+      <Timeline timelineArray={actions} duration={100} language={"python"} />
     </div>
   );
 }
