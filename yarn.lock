@@ -2308,9 +2308,9 @@
   "version" "8.6.0"
 
 "acorn@^8.5.0":
-  "integrity" "sha512-U1riIR+lBSNi3IbxtaHOIKdH8sLFv3NYfNv8sg7ZsNhcfl4HF2++BfqqrNAxoCLQW1iiylOj76ecnaUxz+z9yw=="
-  "resolved" "https://registry.npmjs.org/acorn/-/acorn-8.6.0.tgz"
-  "version" "8.6.0"
+  "integrity" "sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ=="
+  "resolved" "https://registry.npmjs.org/acorn/-/acorn-8.7.0.tgz"
+  "version" "8.7.0"
 
 "address@^1.0.1", "address@1.1.2":
   "integrity" "sha512-aT6camzM4xEA54YVJYSqxz1kv4IHnQZRtThJJHhUMRExaU5spC7jX5ugSwTaTgJliIgs4VhZOk7htClvQ/LmRA=="
@@ -6968,6 +6968,15 @@
     "merge-stream" "^2.0.0"
     "supports-color" "^6.1.0"
 
+"jest-worker@^26.2.1":
+  "integrity" "sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ=="
+  "resolved" "https://registry.npmjs.org/jest-worker/-/jest-worker-26.6.2.tgz"
+  "version" "26.6.2"
+  dependencies:
+    "@types/node" "*"
+    "merge-stream" "^2.0.0"
+    "supports-color" "^7.0.0"
+
 "jest-worker@^26.5.0":
   "integrity" "sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ=="
   "resolved" "https://registry.npmjs.org/jest-worker/-/jest-worker-26.6.2.tgz"
@@ -10311,6 +10320,16 @@
     "serialize-javascript" "^4.0.0"
     "terser" "^4.6.2"
 
+"rollup-plugin-terser@^7.0.2":
+  "integrity" "sha512-w3iIaU4OxcF52UUXiZNsNeuXIMDvFrr+ZXK6bFZ0Q60qyVfq4uLptoS4bbq3paG3x216eQllFZX7zt6TIImguQ=="
+  "resolved" "https://registry.npmjs.org/rollup-plugin-terser/-/rollup-plugin-terser-7.0.2.tgz"
+  "version" "7.0.2"
+  dependencies:
+    "@babel/code-frame" "^7.10.4"
+    "jest-worker" "^26.2.1"
+    "serialize-javascript" "^4.0.0"
+    "terser" "^5.0.0"
+
 "rollup-pluginutils@^2.8.1", "rollup-pluginutils@^2.8.2":
   "integrity" "sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ=="
   "resolved" "https://registry.npmjs.org/rollup-pluginutils/-/rollup-pluginutils-2.8.2.tgz"
@@ -10318,7 +10337,7 @@
   dependencies:
     "estree-walker" "^0.6.1"
 
-"rollup@*", "rollup@^1.20.0||^2.0.0", "rollup@^2.42.0", "rollup@^2.58.0", "rollup@>=0.60.0 <3":
+"rollup@*", "rollup@^1.20.0||^2.0.0", "rollup@^2.0.0", "rollup@^2.42.0", "rollup@^2.58.0", "rollup@>=0.60.0 <3":
   "integrity" "sha512-BbTXlEvB8d+XFbK/7E5doIcRtxWPRiqr0eb5vQ0+2paMM04Ye4PZY5nHOQef2ix24l/L0SpLd5hwcH15QHPdvA=="
   "resolved" "https://registry.npmjs.org/rollup/-/rollup-2.61.1.tgz"
   "version" "2.61.1"
@@ -11368,6 +11387,15 @@
     "commander" "^2.20.0"
     "source-map" "~0.6.1"
     "source-map-support" "~0.5.12"
+
+"terser@^5.0.0":
+  "integrity" "sha512-AMmF99DMfEDiRJfxfY5jj5wNH/bYO09cniSqhfoyxc8sFoYIgkJy86G04UoZU5VjlpnplVu0K6Tx6E9b5+DlHA=="
+  "resolved" "https://registry.npmjs.org/terser/-/terser-5.10.0.tgz"
+  "version" "5.10.0"
+  dependencies:
+    "commander" "^2.20.0"
+    "source-map" "~0.7.2"
+    "source-map-support" "~0.5.20"
 
 "terser@^5.3.4":
   "integrity" "sha512-AMmF99DMfEDiRJfxfY5jj5wNH/bYO09cniSqhfoyxc8sFoYIgkJy86G04UoZU5VjlpnplVu0K6Tx6E9b5+DlHA=="
