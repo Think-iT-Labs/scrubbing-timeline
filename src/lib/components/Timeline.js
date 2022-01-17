@@ -1,10 +1,8 @@
-import * as PropTypes from "prop-types";
+import { arrayOf, exact, number, oneOf, string } from "prop-types";
 import React, { useState } from "react";
 import ReactAce from "react-ace";
 import "ace-builds/src-noconflict/theme-monokai";
 import "./styles/style.css";
-
-const { arrayOf, exact, number, oneOf, string } = PropTypes
 
 
 
