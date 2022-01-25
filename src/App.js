@@ -6,13 +6,13 @@ function App() {
     {
       code: "console.log('Hello World in js')",
       time: 0,
-      actionType: "T",
-      lang: "javascript"
+      actionType: "TYPE",
+      lang: "javascript",
     },
     {
-      code: "print('Hello World is Python')",
+      code: "print('Hello World is Python')\n",
       time: 10,
-      actionType: "T",
+      actionType: "TYPE",
       lang: "python"
     },
     {
@@ -22,14 +22,22 @@ func main() {
     fmt.Println("Hello World in Golang")
 }`,
       time: 11,
-      actionType: "T",
+      actionType: "TYPE",
       lang: "golang"
     },
     {
       code: `puts "Hello World in Ruby"`,
       time: 15,
       actionType: "PASTE",
-      lang: "ruby"
+      lang: "ruby",
+      markers: [{
+        startRow: 0,
+        endRow: 0,
+        startCol: 6,
+        endCol: 25,
+        className: "copy-paste-marker",
+        type: "text",
+      }]
     },
     {
       code: `fun main () {
@@ -48,7 +56,16 @@ int main()
 }`,
       time: 45,
       actionType: "PASTE",
-      lang: "c_cpp"
+      lang: "c_cpp",
+      markers:
+        [{
+          startRow: 3,
+          endRow: 3,
+          startCol: 4,
+          endCol: 32,
+          className: "copy-paste-marker",
+          type: "text",
+        }]
     },
     {
       code: `#include <iostream>
@@ -60,7 +77,7 @@ int main()
     return 0;
 }`,
       time: 50,
-      actionType: "Test",
+      actionType: "TEST",
       lang: "c_cpp"
     },
     {
@@ -73,13 +90,21 @@ public class solution {
     }
 }`,
       time: 70,
-      actionType: "T",
-      lang: "java"
+      actionType: "PASTE",
+      lang: "java",
+      markers: [{
+        startRow: 4,
+        endRow: 6,
+        startCol: 4,
+        endCol: 5,
+        className: "copy-paste-marker",
+        type: "text",
+      }]
     },
     {
       code: `print("Hello World in Swift")`,
       time: 100,
-      actionType: "T",
+      actionType: "TYPE",
       lang: "swift"
     },
   ]
