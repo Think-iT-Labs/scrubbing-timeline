@@ -24,8 +24,10 @@ const Timeline = ({ timelineArray, duration, language = "javascript" }) => {
                 name="brace-editor"
                 style={{ width: timelineArray ? "calc(100% + 3px)" : "100%" }}
                 tabSize={4}
-                readOnly={true}
+                readOnly
+                highlightActiveLine={false}
                 value={focusedAction?.code ?? ""}
+                markers={focusedAction.markers ?? []}
             />
             <div className="timeline-bar">
                 {timelineArray && timelineArray.map((ta, i) => (
@@ -41,13 +43,23 @@ const Timeline = ({ timelineArray, duration, language = "javascript" }) => {
 }
 
 
+const MarkersType = exact({
+    startRow: number.isRequired,
+    endRow: number.isRequired,
+    startCol: number.isRequired,
+    endCol: number.isRequired,
+    className: string.isRequired,
+    type: oneOf(["text", "fullLine", "screenLine"]),
+})
+
 const TimelineType = exact({
     actionType: oneOf(["PASTE",
         "TEST",
         "TYPE"]).isRequired,
     code: string.isRequired,
     time: number.isRequired,
-    lang: string.isRequired
+    lang: string,
+    markers: arrayOf(MarkersType)
 })
 
 Timeline.propTypes = {
