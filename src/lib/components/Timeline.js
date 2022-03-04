@@ -15,7 +15,13 @@ window.ace.config.set(
 const Timeline = ({ timelineArray, duration, language = "javascript" }) => {
 
     const [focusedAction, setFocusedAction] = useState(timelineArray?.[0]);
-
+    const secondsToTime = (secs) => {
+        const hours = Math.floor(secs / (60 * 60));
+        const divisorForMinutes = secs % (60 * 60);
+        const minutes = Math.floor(divisorForMinutes / 60);
+        const seconds = divisorForMinutes % 60;
+        return hours+":"+minutes+":"+seconds; 
+      };
     return (
         <div className="timeline-wrapper">
             <ReactAce
@@ -33,7 +39,7 @@ const Timeline = ({ timelineArray, duration, language = "javascript" }) => {
                 {timelineArray && timelineArray.map((ta, i) => (
                     <div className={`timeline-item ${ta.actionType !== "PASTE" ? "white" : "red"}`} key={`${ta.lang}-${i}`} style={{ left: (ta.time / duration) * 100 + "%" }} onClick={() => setFocusedAction(timelineArray[i])}>
                         <div className="timeslot">
-                            <p>{ta.time}s</p>
+                        <p>{secondsToTime(ta.time)}</p>
                         </div>
                     </div>
                 ))}
