@@ -1,7 +1,6 @@
-import Timeline from './lib';
+import Timeline from "./lib";
 
 function App() {
-
   const actions = [
     {
       code: "console.log('Hello World in js')",
@@ -13,7 +12,7 @@ function App() {
       code: "print('Hello World is Python')\n",
       time: 10,
       actionType: "TYPE",
-      lang: "python"
+      lang: "python",
     },
     {
       code: `package main
@@ -23,21 +22,23 @@ func main() {
 }`,
       time: 11,
       actionType: "TYPE",
-      lang: "golang"
+      lang: "golang",
     },
     {
       code: `puts "Hello World in Ruby"`,
       time: 15,
       actionType: "PASTE",
       lang: "ruby",
-      markers: [{
-        startRow: 0,
-        endRow: 0,
-        startCol: 6,
-        endCol: 25,
-        className: "copy-paste-marker",
-        type: "text",
-      }]
+      markers: [
+        {
+          startRow: 0,
+          endRow: 0,
+          startCol: 6,
+          endCol: 25,
+          className: "copy-paste-marker",
+          type: "text",
+        },
+      ],
     },
     {
       code: `fun main () {
@@ -45,7 +46,7 @@ func main() {
 }`,
       time: 30,
       actionType: "TEST",
-      lang: "kotlin"
+      lang: "kotlin",
     },
     {
       code: `#include <stdio.h>
@@ -57,15 +58,16 @@ int main()
       time: 45,
       actionType: "PASTE",
       lang: "c_cpp",
-      markers:
-        [{
+      markers: [
+        {
           startRow: 3,
           endRow: 3,
           startCol: 4,
           endCol: 32,
           className: "copy-paste-marker",
           type: "text",
-        }]
+        },
+      ],
     },
     {
       code: `#include <iostream>
@@ -78,7 +80,7 @@ int main()
 }`,
       time: 50,
       actionType: "TEST",
-      lang: "c_cpp"
+      lang: "c_cpp",
     },
     {
       code: `import java.util.*;
@@ -92,23 +94,24 @@ public class solution {
       time: 70,
       actionType: "PASTE",
       lang: "java",
-      markers: [{
-        startRow: 4,
-        endRow: 6,
-        startCol: 4,
-        endCol: 5,
-        className: "copy-paste-marker",
-        type: "text",
-      }]
+      markers: [
+        {
+          startRow: 4,
+          endRow: 6,
+          startCol: 4,
+          endCol: 5,
+          className: "copy-paste-marker",
+          type: "text",
+        },
+      ],
     },
     {
       code: `print("Hello World in Swift")`,
       time: 100,
       actionType: "TYPE",
-      lang: "swift"
+      lang: "swift",
     },
-  ]
-
+  ];
 
   return (
     <div className="App h-screen flex flex-col items-center justify-center">
