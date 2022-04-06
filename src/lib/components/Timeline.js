@@ -1,16 +1,9 @@
-import { arrayOf, exact, number, oneOf, string } from "prop-types";
-import React, { useState } from "react";
-import ReactAce from "react-ace";
-import "ace-builds/src-noconflict/theme-monokai";
+import { arrayOf, number, func } from "prop-types";
+import React from "react";
 import "./styles/style.css";
+import { TimelineType } from "../types";
 
-window.ace.config.set(
-  "basePath",
-  "https://cdn.jsdelivr.net/npm/ace-builds@1.4.13/src-noconflict/"
-);
-
-const Timeline = ({ timelineArray, duration, language = "javascript" }) => {
-  const [focusedAction, setFocusedAction] = useState(timelineArray?.[0]);
+const Timeline = ({ timelineArray, duration, setFocusedAction }) => {
   const secondsToTime = (secs) => {
     const hours = Math.floor(secs / (60 * 60));
     const divisorForMinutes = secs % (60 * 60);
@@ -53,33 +46,16 @@ const Timeline = ({ timelineArray, duration, language = "javascript" }) => {
                 <p>{secondsToTime(ta.time)}</p>
               </div>
             </div>
-          ))}
-      </div>
+          </div>
+        ))}
     </div>
   );
 };
 
-const MarkersType = exact({
-  startRow: number.isRequired,
-  endRow: number.isRequired,
-  startCol: number.isRequired,
-  endCol: number.isRequired,
-  className: string.isRequired,
-  type: oneOf(["text", "fullLine", "screenLine"]),
-});
-
-const TimelineType = exact({
-  actionType: oneOf(["PASTE", "TEST", "TYPE"]).isRequired,
-  code: string.isRequired,
-  time: number.isRequired,
-  lang: string,
-  markers: arrayOf(MarkersType),
-});
-
 Timeline.propTypes = {
   timelineArray: arrayOf(TimelineType).isRequired,
   duration: number.isRequired,
-  language: string,
+  setFocusedAction: func.isRequired,
 };
 
 export default Timeline;
