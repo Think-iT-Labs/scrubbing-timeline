@@ -26,7 +26,7 @@ const ScrubbingTimeLine = ({
         setFocusedActionIndex={setFocusedActionIndex}
       />
       <Player
-        lastIndex={timelineArray?.length - 1 ?? 0}
+        lastSnapshotIndex={timelineArray?.length - 1 ?? 0}
         index={focusedActionIndex}
         update={setFocusedActionIndex}
       />
