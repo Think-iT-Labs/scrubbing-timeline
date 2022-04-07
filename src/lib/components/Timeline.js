@@ -3,7 +3,7 @@ import React from "react";
 import "./styles/style.css";
 import { TimelineType } from "../types";
 
-const Timeline = ({ timelineArray, duration, setFocusedAction }) => {
+const Timeline = ({ timelineArray, duration, setFocusedActionIndex }) => {
   const secondsToTime = (secs) => {
     const hours = Math.floor(secs / (60 * 60));
     const divisorForMinutes = secs % (60 * 60);
@@ -55,7 +55,7 @@ const Timeline = ({ timelineArray, duration, setFocusedAction }) => {
 Timeline.propTypes = {
   timelineArray: arrayOf(TimelineType).isRequired,
   duration: number.isRequired,
-  setFocusedAction: func.isRequired,
+  setFocusedActionIndex: func.isRequired,
 };
 
 export default Timeline;

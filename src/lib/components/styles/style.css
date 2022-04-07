@@ -8,10 +8,29 @@
   position: relative;
 }
 
-.timeline-bar {
+.timeline-bar,
+.timeline-player {
   height: 20px;
   background-color: #a9a9a9;
   position: relative;
+}
+
+.timeline-player {
+  display: flex;
+  justify-content: center;
+}
+
+.timeline-player * {
+  padding: 0 2rem;
+}
+
+.current-snap {
+  font-weight: bold;
+}
+
+.fa {
+  cursor: pointer;
+  color: #444444;
 }
 
 .timeline-cursor {
