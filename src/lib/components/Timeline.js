@@ -22,8 +22,8 @@ const Timeline = ({ timelineArray, duration, language = "javascript" }) => {
     switch (actionType){
       case "PASTE": return "red";
       case "TYPE" : return "white";
-      case "TEST": return "blue"
-      default: return "white"
+      case "TEST": return "blue";
+      default: return "white";
     }
   };
   return (
