@@ -18,6 +18,14 @@ const Timeline = ({ timelineArray, duration, language = "javascript" }) => {
     const seconds = divisorForMinutes % 60;
     return hours + ":" + minutes + ":" + seconds;
   };
+  const getColor = (actionType) => {
+    switch (actionType){
+      case "PASTE": return "red";
+      case "TYPE" : return "white";
+      case "TEST": return "blue"
+      default: return "white"
+    }
+  };
   return (
     <div className="timeline-wrapper">
       <ReactAce
@@ -36,8 +44,7 @@ const Timeline = ({ timelineArray, duration, language = "javascript" }) => {
           timelineArray.map((ta, i) => (
             <div
               className={`timeline-item ${
-                ta.actionType !== "PASTE" ? "white" : "red"
-              }`}
+                getColor(ta.actionType)}`}
               key={`${ta.lang}-${i}`}
               style={{ left: (ta.time / duration) * 100 + "%" }}
               onClick={() => setFocusedAction(timelineArray[i])}

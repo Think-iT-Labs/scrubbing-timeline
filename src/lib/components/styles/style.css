@@ -39,6 +39,10 @@
   background-color: #676767;
 }
 
+.blue {
+  background-color: #1b36ba;
+}
+
 .timeslot {
   display: none;
   position: absolute;
