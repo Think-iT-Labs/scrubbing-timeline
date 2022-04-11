@@ -10,25 +10,25 @@ window.ace.config.set(
   "https://cdn.jsdelivr.net/npm/ace-builds@1.4.13/src-noconflict/"
 );
 
-const Editor = ({ action, language }) => {
+const Editor = ({ currentAction, defaultLanguage }) => {
   return (
     <ReactAce
-      mode={action?.lang ?? language} // if there's no lang in action or language it will default to javascript
+      mode={currentAction?.lang ?? defaultLanguage} // if there's no lang in action or language it will default to javascript
       theme="monokai"
       name="brace-editor"
       style={{ width: "calc(100% + 3px)" }}
       tabSize={4}
       readOnly
       highlightActiveLine={false}
-      value={action?.code ?? ""}
-      markers={action?.markers ?? []}
+      value={currentAction?.code ?? ""}
+      markers={currentAction?.markers ?? []}
     />
   );
 };
 
 Editor.propTypes = {
   action: TimelineType,
-  defaultLanguage: string.isRequired,
+  defaultLanguage: string,
 };
 
 export default Editor;

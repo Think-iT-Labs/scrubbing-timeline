@@ -2,70 +2,81 @@ import React, { useState, useEffect, useRef } from "react";
 import { func } from "prop-types";
 import { number } from "prop-types";
 
-const Player = ({ update, lastSnapshotIndex, index }) => {
-  const [currentSnapInput, setCurrentSnapInput] = useState(index + 1);
-  const [runTimer, setRunTimer] = useState(false);
-  const timerId = useRef(null);
+const Player = ({
+  updateFocusedActionIndex,
+  lastActionIndex,
+  focusedActionIndex,
+}) => {
+  const [focusedActionInput, setFocusedActionInput] = useState(
+    focusedActionIndex + 1
+  );
+  const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const setIntervalId = useRef(null);
 
   const handleOnBlur = () => {
-    if (currentSnapInput >= 1 && currentSnapInput <= lastSnapshotIndex + 1)
-      update(currentSnapInput - 1);
-    else setCurrentSnapInput(index + 1);
+    if (focusedActionInput >= 1 && focusedActionInput <= lastActionIndex + 1)
+      updateFocusedActionIndex(focusedActionInput - 1);
+    else setFocusedActionInput(focusedActionIndex + 1);
   };
 
   // play the snapshots in .5 untervals
   useEffect(() => {
-    if (!runTimer) return;
-    timerId.current = setInterval(() => update((v) => v + 1), 500);
-    return () => clearInterval(timerId.current);
-  }, [runTimer, update]);
+    if (!isTimerRunning) return;
+    setIntervalId.current = setInterval(
+      () => updateFocusedActionIndex((v) => v + 1),
+      500
+    );
+    return () => clearInterval(setIntervalId.current);
+  }, [isTimerRunning, updateFocusedActionIndex]);
 
   // watch to clear the setInterval
   useEffect(() => {
-    if (timerId.current && index > lastSnapshotIndex - 1) {
-      clearInterval(timerId.current);
-      setRunTimer(false);
-      timerId.current = null;
+    if (setIntervalId.current && focusedActionIndex > lastActionIndex - 1) {
+      clearInterval(setIntervalId.current);
+      setIsTimerRunning(false);
+      setIntervalId.current = null;
     }
-  }, [index, lastSnapshotIndex]);
+  }, [focusedActionIndex, lastActionIndex]);
 
   // sync the setCurrentSnapInput with the index prop
   useEffect(() => {
-    setCurrentSnapInput(index + 1);
-  }, [index]);
+    setFocusedActionInput(focusedActionIndex + 1);
+  }, [focusedActionIndex]);
 
   return (
     <div className="timeline-player">
       <i
         className="first-button fa fa-fast-backward"
-        onClick={() => update(0)}
+        onClick={() => updateFocusedActionIndex(0)}
       />
       <i
         className="previous-button fa fa-step-backward"
-        onClick={() => update((value) => (value > 0 ? value - 1 : 0))}
+        onClick={() =>
+          updateFocusedActionIndex((value) => (value > 0 ? value - 1 : 0))
+        }
       />
       <div className="current-snap">
         <input
           type="number"
-          value={currentSnapInput}
+          value={focusedActionInput}
           onChange={(e) => {
             const input = e.target.value;
-            setCurrentSnapInput(input);
+            setFocusedActionInput(input);
           }}
           onBlur={handleOnBlur}
           style={{
-            width: `${`${lastSnapshotIndex}`.length * 10}px`,
+            width: `${`${lastActionIndex}`.length * 10}px`,
           }}
           onKeyDown={(event) => event.key === "Enter" && handleOnBlur()}
         />
-        /{lastSnapshotIndex + 1}
+        /{lastActionIndex + 1}
       </div>
-      {!runTimer ? (
+      {!isTimerRunning ? (
         <i
           className="play-button fa fa-solid fa-play"
           onClick={() => {
-            if (index < lastSnapshotIndex) {
-              setRunTimer(true);
+            if (focusedActionIndex < lastActionIndex) {
+              setIsTimerRunning(true);
             }
           }}
         />
@@ -73,32 +84,32 @@ const Player = ({ update, lastSnapshotIndex, index }) => {
         <i
           className="pause-button fa fa-solid fa-pause"
           onClick={() => {
-            setRunTimer(false);
-            clearInterval(timerId.current);
-            timerId.current = null;
+            setIsTimerRunning(false);
+            clearInterval(setIntervalId.current);
+            setIntervalId.current = null;
           }}
         />
       )}
       <i
         className="next-button fa fa-step-forward"
         onClick={() =>
-          update((value) =>
-            value < lastSnapshotIndex ? value + 1 : lastSnapshotIndex
+          updateFocusedActionIndex((value) =>
+            value < lastActionIndex ? value + 1 : lastActionIndex
           )
         }
       />
       <i
         className="last-button fa fa-fast-forward"
-        onClick={() => update(lastSnapshotIndex)}
+        onClick={() => updateFocusedActionIndex(lastActionIndex)}
       />
     </div>
   );
 };
 
 Player.propTypes = {
-  update: func.isRequired,
-  lastSnapshotIndex: number.isRequired,
-  index: number.isRequired,
+  updateFocusedActionIndex: func.isRequired,
+  lastActionIndex: number.isRequired,
+  focusedActionIndex: number.isRequired,
 };
 
 export default Player;

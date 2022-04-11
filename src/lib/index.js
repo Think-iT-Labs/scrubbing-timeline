@@ -18,7 +18,7 @@ const ScrubbingTimeLine = ({
     <div className="timeline-wrapper">
       <Editor
         defaultLanguage={language}
-        action={timelineArray[focusedActionIndex]}
+        currentAction={timelineArray[focusedActionIndex]}
       />
       <Timeline
         focusedActionIndex={focusedActionIndex}
@@ -27,9 +27,9 @@ const ScrubbingTimeLine = ({
         setFocusedActionIndex={setFocusedActionIndex}
       />
       <Player
-        lastSnapshotIndex={timelineArray?.length - 1 ?? 0}
-        index={focusedActionIndex}
-        update={setFocusedActionIndex}
+        lastActionIndex={timelineArray?.length - 1 ?? 0}
+        focusedActionIndex={focusedActionIndex}
+        updateFocusedActionIndex={setFocusedActionIndex}
       />
     </div>
   );
