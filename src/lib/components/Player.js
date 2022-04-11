@@ -1,4 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
+import {
+  SkipBackwardIcon,
+  PlayIcon,
+  SkipIcon,
+  SkipToBeginningIcon,
+  PauseIcon,
+  SkipToEndIcon,
+} from "../icons";
 import { func } from "prop-types";
 import { number } from "prop-types";
 
@@ -45,12 +53,12 @@ const Player = ({
 
   return (
     <div className="timeline-player">
-      <i
-        className="first-button fa fa-fast-backward"
+      <SkipToBeginningIcon
+        className="icon first-button"
         onClick={() => updateFocusedActionIndex(0)}
       />
-      <i
-        className="previous-button fa fa-step-backward"
+      <SkipBackwardIcon
+        className="icon previous-button"
         onClick={() =>
           updateFocusedActionIndex((value) => (value > 0 ? value - 1 : 0))
         }
@@ -71,9 +79,10 @@ const Player = ({
         />
         /{lastActionIndex + 1}
       </div>
+
       {!isTimerRunning ? (
-        <i
-          className="play-button fa fa-solid fa-play"
+        <PlayIcon
+          className="icon play-button"
           onClick={() => {
             if (focusedActionIndex < lastActionIndex) {
               setIsTimerRunning(true);
@@ -81,8 +90,8 @@ const Player = ({
           }}
         />
       ) : (
-        <i
-          className="pause-button fa fa-solid fa-pause"
+        <PauseIcon
+          className="icon pause-button"
           onClick={() => {
             setIsTimerRunning(false);
             clearInterval(setIntervalId.current);
@@ -90,16 +99,16 @@ const Player = ({
           }}
         />
       )}
-      <i
-        className="next-button fa fa-step-forward"
+      <SkipIcon
+        className="icon next-button"
         onClick={() =>
           updateFocusedActionIndex((value) =>
             value < lastActionIndex ? value + 1 : lastActionIndex
           )
         }
       />
-      <i
-        className="last-button fa fa-fast-forward"
+      <SkipToEndIcon
+        className="icon last-button"
         onClick={() => updateFocusedActionIndex(lastActionIndex)}
       />
     </div>
