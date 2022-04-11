@@ -21,6 +21,7 @@ const ScrubbingTimeLine = ({
         action={timelineArray[focusedActionIndex]}
       />
       <Timeline
+        focusedActionIndex={focusedActionIndex}
         duration={duration}
         timelineArray={timelineArray}
         setFocusedActionIndex={setFocusedActionIndex}

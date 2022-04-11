@@ -8,25 +8,19 @@ const Player = ({ update, lastSnapshotIndex, index }) => {
   const timerId = useRef(null);
 
   const handleOnBlur = () => {
-    if (currentSnapInput >= 1 && currentSnapInput <= lastSnapshotIndex + 1) {
+    if (currentSnapInput >= 1 && currentSnapInput <= lastSnapshotIndex + 1)
       update(currentSnapInput - 1);
-    } else {
-      setCurrentSnapInput(index + 1);
-    }
+    else setCurrentSnapInput(index + 1);
   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") handleOnBlur();
-  };
-
+  // play the snapshots in .5 untervals
   useEffect(() => {
     if (!runTimer) return;
-    timerId.current = setInterval(() => {
-      update((v) => v + 1);
-    }, 500);
+    timerId.current = setInterval(() => update((v) => v + 1), 500);
     return () => clearInterval(timerId.current);
-  }, [index, currentSnapInput, lastSnapshotIndex, runTimer, update]);
+  }, [runTimer, update]);
 
+  // watch to clear the setInterval
   useEffect(() => {
     if (timerId.current && index > lastSnapshotIndex - 1) {
       clearInterval(timerId.current);
@@ -35,6 +29,7 @@ const Player = ({ update, lastSnapshotIndex, index }) => {
     }
   }, [index, lastSnapshotIndex]);
 
+  // sync the setCurrentSnapInput with the index prop
   useEffect(() => {
     setCurrentSnapInput(index + 1);
   }, [index]);
@@ -61,7 +56,7 @@ const Player = ({ update, lastSnapshotIndex, index }) => {
           style={{
             width: `${`${lastSnapshotIndex}`.length * 10}px`,
           }}
-          onKeyDown={handleKeyDown}
+          onKeyDown={(event) => event.key === "Enter" && handleOnBlur()}
         />
         /{lastSnapshotIndex + 1}
       </div>
@@ -85,8 +80,7 @@ const Player = ({ update, lastSnapshotIndex, index }) => {
         />
       )}
       <i
-        className="next-button fa fa-step-forward
-"
+        className="next-button fa fa-step-forward"
         onClick={() =>
           update((value) =>
             value < lastSnapshotIndex ? value + 1 : lastSnapshotIndex
@@ -94,8 +88,7 @@ const Player = ({ update, lastSnapshotIndex, index }) => {
         }
       />
       <i
-        className="last-button fa fa-fast-forward
-"
+        className="last-button fa fa-fast-forward"
         onClick={() => update(lastSnapshotIndex)}
       />
     </div>

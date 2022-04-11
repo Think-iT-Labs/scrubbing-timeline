@@ -3,7 +3,12 @@ import React from "react";
 import "./styles/style.css";
 import { TimelineType } from "../types";
 
-const Timeline = ({ timelineArray, duration, setFocusedActionIndex }) => {
+const Timeline = ({
+  timelineArray,
+  duration,
+  setFocusedActionIndex,
+  focusedActionIndex,
+}) => {
   const secondsToTime = (secs) => {
     const hours = Math.floor(secs / (60 * 60));
     const divisorForMinutes = secs % (60 * 60);
@@ -11,41 +16,35 @@ const Timeline = ({ timelineArray, duration, setFocusedActionIndex }) => {
     const seconds = divisorForMinutes % 60;
     return hours + ":" + minutes + ":" + seconds;
   };
+
   const getColor = (actionType) => {
-    switch (actionType){
-      case "PASTE": return "red";
-      case "TYPE" : return "white";
-      case "TEST": return "blue";
-      default: return "white";
+    switch (actionType) {
+      case "PASTE":
+        return "red";
+      case "TYPE":
+        return "white";
+      case "TEST":
+        return "blue";
+      default:
+        return "white";
     }
   };
   return (
-    <div className="timeline-wrapper">
-      <ReactAce
-        mode={focusedAction?.lang ?? language} // if there's no lang in focusedAction or language it will default to javascript
-        theme="monokai"
-        name="brace-editor"
-        style={{ width: timelineArray ? "calc(100% + 3px)" : "100%" }}
-        tabSize={4}
-        readOnly
-        highlightActiveLine={false}
-        value={focusedAction?.code ?? ""}
-        markers={focusedAction?.markers ?? []}
-      />
-      <div className="timeline-bar">
-        {timelineArray &&
-          timelineArray.map((ta, i) => (
-            <div
-              className={`timeline-item ${
-                getColor(ta.actionType)}`}
-              key={`${ta.lang}-${i}`}
-              style={{ left: (ta.time / duration) * 100 + "%" }}
-              onClick={() => setFocusedAction(timelineArray[i])}
-            >
-              <div className="timeslot">
-                <p>{secondsToTime(ta.time)}</p>
-              </div>
+    <div className="timeline-bar">
+      {timelineArray &&
+        timelineArray.map((ta, i) => (
+          <div
+            className={`timeline-item ${getColor(ta.actionType)}`}
+            key={`${ta.lang}-${i}`}
+            style={{ left: (ta.time / duration) * 100 + "%" }}
+            onClick={() => setFocusedActionIndex(i)}
+          >
+            <div className="timeslot">
+              <p>{secondsToTime(ta.time)}</p>
             </div>
+            {focusedActionIndex === i && (
+              <div className={`pointer ${getColor(ta.actionType)}`} />
+            )}
           </div>
         ))}
     </div>
@@ -56,6 +55,7 @@ Timeline.propTypes = {
   timelineArray: arrayOf(TimelineType).isRequired,
   duration: number.isRequired,
   setFocusedActionIndex: func.isRequired,
+  focusedActionIndex: number.isRequired,
 };
 
 export default Timeline;

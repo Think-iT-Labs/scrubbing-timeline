@@ -34,6 +34,7 @@ input[type="number"] {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: calc(100% + 3px);
 }
 
 .timeline-player * {
@@ -108,4 +109,14 @@ input[type="number"] {
 .copy-paste-marker {
   position: absolute;
   background-color: #bd2e4c5e;
+}
+
+.pointer {
+  position: absolute;
+  top: -25%;
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  z-index: 5;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
