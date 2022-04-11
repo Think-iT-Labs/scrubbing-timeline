@@ -2,16 +2,58 @@
   --timeline-bar-height: 20px;
   --timeline-cursor-height: 30px;
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+  margin: 0;
+  opacity: 0.5;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .timeline-wrapper {
   width: 1100px;
   margin: 0 auto;
   position: relative;
 }
 
-.timeline-bar {
+.timeline-bar,
+.timeline-player {
   height: 20px;
   background-color: #a9a9a9;
   position: relative;
+}
+
+.timeline-player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% + 3px);
+}
+
+.timeline-player * {
+  padding: 0 2rem;
+}
+
+.current-snap {
+  font-weight: bold;
+}
+
+.current-snap input {
+  height: 11px;
+  width: 10px;
+  padding: 0;
+}
+
+.fa {
+  cursor: pointer;
+  color: #444444;
 }
 
 .timeline-cursor {
@@ -67,4 +109,14 @@
 .copy-paste-marker {
   position: absolute;
   background-color: #bd2e4c5e;
+}
+
+.pointer {
+  position: absolute;
+  top: -25%;
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  z-index: 5;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
