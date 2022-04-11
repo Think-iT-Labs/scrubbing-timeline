@@ -54,11 +54,11 @@ const Player = ({
   return (
     <div className="timeline-player">
       <SkipToBeginningIcon
-        className="icon first-button"
+        className="player-icon first-button"
         onClick={() => updateFocusedActionIndex(0)}
       />
       <SkipBackwardIcon
-        className="icon previous-button"
+        className="player-icon previous-button"
         onClick={() =>
           updateFocusedActionIndex((value) => (value > 0 ? value - 1 : 0))
         }
@@ -82,7 +82,7 @@ const Player = ({
 
       {!isTimerRunning ? (
         <PlayIcon
-          className="icon play-button"
+          className="player-icon play-button"
           onClick={() => {
             if (focusedActionIndex < lastActionIndex) {
               setIsTimerRunning(true);
@@ -91,7 +91,7 @@ const Player = ({
         />
       ) : (
         <PauseIcon
-          className="icon pause-button"
+          className="player-icon pause-button"
           onClick={() => {
             setIsTimerRunning(false);
             clearInterval(setIntervalId.current);
@@ -100,7 +100,7 @@ const Player = ({
         />
       )}
       <SkipIcon
-        className="icon next-button"
+        className="player-icon next-button"
         onClick={() =>
           updateFocusedActionIndex((value) =>
             value < lastActionIndex ? value + 1 : lastActionIndex
@@ -108,7 +108,7 @@ const Player = ({
         }
       />
       <SkipToEndIcon
-        className="icon last-button"
+        className="player-icon last-button"
         onClick={() => updateFocusedActionIndex(lastActionIndex)}
       />
     </div>
