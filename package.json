@@ -1,6 +1,6 @@
 {
   "name": "react-scrubbing-timeline",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "author": "MahdiBZ",
   "private": false,
   "main": "dist/index.js",

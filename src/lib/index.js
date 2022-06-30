@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Editor from "./components/Editor";
 import { TimelineType } from "./types";
 import Player from "./components/Player";
+import TestResult from "./components/TestResult";
 
 const Timeline = React.memo(_Timeine);
 
@@ -30,6 +31,9 @@ const ScrubbingTimeLine = ({
         lastActionIndex={timelineArray?.length - 1 ?? 0}
         focusedActionIndex={focusedActionIndex}
         updateFocusedActionIndex={setFocusedActionIndex}
+      />
+      <TestResult
+        currentAction={timelineArray[focusedActionIndex]}
       />
     </div>
   );

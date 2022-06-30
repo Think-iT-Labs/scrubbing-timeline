@@ -47,6 +47,16 @@ func main() {
       time: 30,
       actionType: "TEST",
       lang: "kotlin",
+      test: [
+        {
+          "expectedOutput": "Hello World in Kotlin",
+          "reason": "",
+          "result": true,
+          "testId": 1,
+          "testOutput": "Hello World in Kotlin",
+          "testInput": "Hello World in "
+        }
+      ]
     },
     {
       code: `#include <stdio.h>
@@ -75,12 +85,22 @@ using namespace std;
 
 int main()
 {
-    std::cout << "Hello World in C++";
+    std::cout << "Hello World in C+";
     return 0;
 }`,
       time: 50,
       actionType: "TEST",
       lang: "c_cpp",
+      test: [
+        {
+          "expectedOutput": "Hello World in C++",
+          "reason": "",
+          "result": false,
+          "testId": 1,
+          "testOutput": "Hello World in C+",
+          "testInput": "Hello World in "
+        }
+      ]
     },
     {
       code: `import java.util.*;

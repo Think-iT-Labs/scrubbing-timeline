@@ -125,3 +125,12 @@ input[type="number"] {
   cursor: pointer;
   fill: #444444;
 }
+
+.test-result {
+  padding: 1em;
+  border-radius: 1em;
+  border: 1px black solid;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
