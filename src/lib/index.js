@@ -16,25 +16,29 @@ const ScrubbingTimeLine = ({
   const [focusedActionIndex, setFocusedActionIndex] = useState(0);
 
   return (
-    <div className="timeline-wrapper">
-      <Editor
-        defaultLanguage={language}
-        currentAction={timelineArray[focusedActionIndex]}
-      />
-      <Timeline
-        focusedActionIndex={focusedActionIndex}
-        duration={duration}
-        timelineArray={timelineArray}
-        setFocusedActionIndex={setFocusedActionIndex}
-      />
-      <Player
-        lastActionIndex={timelineArray?.length - 1 ?? 0}
-        focusedActionIndex={focusedActionIndex}
-        updateFocusedActionIndex={setFocusedActionIndex}
-      />
-      <TestResult
-        currentAction={timelineArray[focusedActionIndex]}
-      />
+    <div>
+      <div  className={(timelineArray[focusedActionIndex].actionType === "TEST" && timelineArray[focusedActionIndex]?.test)?"timeline-wrapper-test":"timeline-wrapper"}>
+        <Editor
+          defaultLanguage={language}
+          currentAction={timelineArray[focusedActionIndex]}
+        />
+        <Timeline
+          focusedActionIndex={focusedActionIndex}
+          duration={duration}
+          timelineArray={timelineArray}
+          setFocusedActionIndex={setFocusedActionIndex}
+        />
+        <Player
+          lastActionIndex={timelineArray?.length - 1 ?? 0}
+          focusedActionIndex={focusedActionIndex}
+          updateFocusedActionIndex={setFocusedActionIndex}
+        /></div>
+      <div className="test-wrapper">
+        <TestResult
+          currentAction={timelineArray[focusedActionIndex]}
+        />
+      </div>
+
     </div>
   );
 };

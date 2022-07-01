@@ -23,6 +23,18 @@ input[type="number"] {
   position: relative;
 }
 
+.timeline-wrapper-test {
+  width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  display: inline-block;
+}
+
+.test-wrapper {
+  margin: 1rem;
+  position: absolute;
+  display: inline-block;
+}
 .timeline-bar,
 .timeline-player {
   height: 20px;

@@ -7,8 +7,8 @@ import { TimelineType } from "../types";
 const TestResult = ({ currentAction }) => {
   return (
 
-    currentAction.actionType === "TEST" &&
-    currentAction.test.map((test, i) => (
+   ( currentAction.actionType === "TEST" && currentAction?.test )?
+    currentAction?.test.map((test, i) => (
       <div style={{ textAlign: 'center' }}>
         <h4>Input</h4>
         <p className="test-result"> {test.testInput} </p>
@@ -21,6 +21,8 @@ const TestResult = ({ currentAction }) => {
       </div>
 
     ))
+    :
+    <div></div>
   );
 };
 
