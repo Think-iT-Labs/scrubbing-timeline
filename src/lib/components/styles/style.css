@@ -18,35 +18,40 @@ input[type="number"] {
 }
 
 .timeline-wrapper {
-  width: 1100px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 20px;
+}
+
 .timeline-wrapper-test {
-  width: 1100px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
-  display: inline-block;
 }
 
 .test-wrapper {
   margin: 1rem;
-  position: absolute;
-  display: inline-block;
 }
+
 .timeline-bar,
 .timeline-player {
   height: 20px;
   background-color: #a9a9a9;
   position: relative;
+  width: 100%;
+
 }
 
 .timeline-player {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(100% + 3px);
 }
 
 .timeline-player * {

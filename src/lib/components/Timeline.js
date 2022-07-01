@@ -36,7 +36,7 @@ const Timeline = ({
           <div
             className={`timeline-item ${getColor(ta.actionType)}`}
             key={`${ta.lang}-${i}`}
-            style={{ left: (ta.time / duration) * 100 + "%" }}
+            style={{ left: `calc(${(ta.time / duration) * 100}% - 3px)` }}
             onClick={() => setFocusedActionIndex(i)}
           >
             <div className="timeslot">
