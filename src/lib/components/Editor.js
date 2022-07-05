@@ -16,7 +16,7 @@ const Editor = ({ currentAction, defaultLanguage }) => {
       mode={currentAction?.lang ?? defaultLanguage} // if there's no lang in action or language it will default to javascript
       theme="monokai"
       name="brace-editor"
-      style={{ width: "calc(100% + 3px)" }}
+      style={{ width: "100%" }}
       tabSize={4}
       readOnly
       highlightActiveLine={false}
